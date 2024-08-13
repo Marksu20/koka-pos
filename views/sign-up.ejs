@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"  crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <style>
+      .login-container {
+        width: 400px;
+        margin-top: 100px;
+      }
+      #snackbar {
+        visibility: hidden;
+        min-width: 250px;
+        background-color: #4caf50;
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        bottom: 30px;
+        font-size: 17px;
+      }
+      #snackbar.show{
+        visibility: visible; /* show snackbar */
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      }
+      /* @-webkit-keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opcaity: 1;}
+      }
+      @keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opcaity: 1;}
+      }
+      @-webkit-keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opcaity: 0;}
+      }
+      @keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opcaity: 0;}
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="container d-flex justify-content-center">
+      <div class="login-container p-4 rounded shadow">
+        <!--REGISTER HEADER-->
+        <h2 class="text-center mb-4">Register</h2>
+        <form id="registrationForm">
+          <!--BUSINESS NAME-->
+          <div class="m-1">
+            <label for="username" class="form-label">Business Name</label>
+            <input 
+              name="userName" 
+              id="username" 
+              type="text" 
+              class="form-control mb-2" 
+              placeholder="Enter Business Name" 
+              required 
+            />
+          <div class="text-danger username error"></div>
+          </div>
+          
+					<!--EMAIL-->
+          <div class="m-1">
+            <label for="email" class="form-label">Email address</label>
+            <input 
+              name="Email" 
+              id="email" 
+              type="email" 
+              class="form-control mb-2" 
+              placeholder="name@example.com" 
+              required
+            />
+          <div class="text-danger email error"></div>
+          </div>
+          
+          <!--PASSWORD-->
+          <div class="m-1">
+            <label for="password" class="form-label">Password</label>
+            <div class="input-group">
+              <input 
+                name="Password" 
+                id="password" 
+                type="" 
+                class="form-control" 
+                placeholder="Password" 
+                aria-describedby="passEye" 
+                required
+              />
+							<!--ICON-->
+              <span class="input-group-text" id="passEye">
+                <a class="pe-auto link-success">
+                  <i id="js-eyeicon" class="js-password bi bi-eye-slash-fill"></i>
+								</a>
+              </span>
+              <div class="invalid-feedback">password must have 6-8 characters.</div>
+            </div>
+            <div class="password error"></div>
+          </div>
+          <!--CONFIRM PASSWORD-->
+          <div class="m-1 mb-5">
+            <label for="confirmPassword" class="form-label">Confirm Password</label>
+            <div class="input-group">
+              <input 
+                name="confPassword" 
+                id="confirmPassword" 
+                class="form-control" 
+                type=""  
+                placeholder="Confirm Password" 
+                aria-describedby="conEye" 
+                required
+              />
+              <!--ICON-->
+              <span class="input-group-text" id="conEye">
+                <a class="pe-auto link-success">
+                  <i id="js-coneye" class="js-conpass bi bi-eye-slash"></i>
+								</a>
+              </span>
+              <div class="valid-feedback">password matched!</div>
+            <div class="invalid-feedback">password does not match!</div>
+            <div class="text-danger confirmPass error"></div>
+            </div>
+            
+          </div>
+          <!--SUBMIT BUTTON-->
+          <div class="d-flex flex-row justify-content-center">
+            <button
+              type="submit"
+              class="btn btn-primary w-50 rounded-pill"
+            ><a style="text-decoration: none; color: white;">SIGN UP</a>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!--LOG IN LINK-->
+    <p class="text-center mt-2" 
+	 		 style="font-size: 13px">
+			 Already have an account? <a href="/api/auth/sign-in">Sign In</a>
+		</p>
+  </body>
+  <div id="snackbar">Sign Up Succesful. You can Sign In now.</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  //EMAIL VALIDATION
+  // const emailInput = document.getElementById("uEmail");
+  // emailInput.addEventListener("input", (event) => {
+  //   const emailValue = emailInput.value;
+  //   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  //   if (!emailPattern.test(emailValue)) {
+  //     emailInput.classList.add("is-invalid");
+  //     emailInput.classList.remove("is-valid");
+  //     event.preventDefault();
+  //   } else {
+  //     emailInput.classList.remove("is-invalid");
+  //     emailInput.classList.add("is-valid");
+  //   }
+  // });
+  // PASSWORD LENGTH VALIDATION
+  // const passInput = document.getElementById("userPass");
+  // passInput.addEventListener("input", (event) => {
+  //   let minLen = 6;
+  //   if (passInput.value.length < minLen) {
+  //     passInput.classList.add("is-invalid");
+  //     passInput.classList.remove("is-valid");
+  //     event.preventDefault();
+  //   } else {
+  //     passInput.classList.remove("is-invalid");
+  //     passInput.classList.add("is-valid");
+  //   }
+  // });
+  // PASSWORD CONFIRMATION
+  // const inputVal = document.getElementById("userPass");
+  // const conpassInput = document.getElementById("confPass");
+  // conpassInput.addEventListener("input", (event) => {
+  //   if (conpassInput.value !== inputVal.value) {
+  //     conpassInput.classList.add("is-invalid");
+  //     conpassInput.classList.remove("is-valid");
+  //     event.preventDefault();
+  //   } else {
+  //     conpassInput.classList.remove("is-invalid");
+  //     conpassInput.classList.add("is-valid");
+  //   }
+  // });
+  
+  // HIDE PASSWORD FUNCTION 6/28 4:50
+	// let icon = document.getElementById("js-eyeicon");
+	// icon.addEventListener("click", (event) => {
+	// 	let passtype = document.getElementById("userPass");
+	// 	if (passtype.type === "password") {
+	// 		passtype.type = "text";
+	// 		icon.classList.remove("bi-eye-slash-fill");
+	// 		icon.classList.add("bi-eye-fill");
+	// 	} else {
+	// 		passtype.type = "password";
+	// 		icon.classList.add("bi-eye-slash-fill");
+	// 	}
+	// 	console.log(`${passtype.type}`);
+	// });
+	// HIDE PASSWORD CONFIRMATION FUNCTION
+	// let conicon = document.getElementById("js-coneye");
+	// conicon.addEventListener("click", (event) => {
+	//   let contype = document.getElementById("confPass");
+	//   if (contype.type === "password") {
+	//     contype.type = "text";
+	//     conicon.classList.remove("bi-eye-slash");
+	//     conicon.classList.add("bi-eye");
+	//   } else {
+	//     contype.type = "password";
+	//     conicon.classList.remove("bi-eye");
+	//     conicon.classList.add("bi-eye-slash");
+	//   }
+	//   console.log(`${contype.type}`);
+	// });
+</script>
+<script>
+  const form = document.querySelector('form');
+  const usernameError = document.querySelector('.username.error');
+  const emailError = document.querySelector('.email.error');
+  const passwordError = document.querySelector('.password.error');
+  const confirmPassError = document.querySelector('.confirmPass.error');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    // reset error
+    usernameError.textContent = '';
+    emailError.textContent = '';
+    passwordError.textContent = '';
+    confirmPassError.textContent = '';
+
+      // get values
+      const username = form.username.value;
+      const email = form.email.value;
+      const password = form.password.value;
+      try{
+        const res = await fetch('/api/auth/sign-up', {
+          method: 'POST',
+          body: JSON.stringify({ username, email, password }),
+          headers: {'Content-Type':'application/json'}
+        });
+        const data = await res.json();
+        console.log('data is', data)
+
+        if(data.errors) {
+          usernameError.textContent = data.errors.username;
+          emailError.textContent = data.errors.email;
+          passwordError.textContent = data.errors.password;
+        }
+
+        if(data.user) {
+          showSnackbar();
+        }
+      } catch(error) {
+        console.log(err);
+      }
+
+      function showSnackbar() {
+        const snackbar = document.getElementById('snackbar');
+        snackbar.className = "show";
+        setTimeout(() => {
+          snackbar.className = snackbar.className.replace("show", "");
+        }, 8000);
+      }
+  });
+</script>
+</html>
